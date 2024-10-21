@@ -6,41 +6,32 @@ main(){
     cout<<"printing the list: "<<endl;
     myList.print();
 
-    myList.insert(10);
+    myList.insert(8);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;
 
-    myList.insert(15);
+    myList.insert(9);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;
     
-    myList.insert(5);
+    myList.insert(2);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;
 
-    myList.insert(1);
+    myList.insert(0);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;
 
-    cout<<myList.update(2, 9);
-    cout<<"printing the list: "<<endl;
-    myList.print();
-
-    myList.insert(18);
+    myList.remove(9);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;
 
-    myList.insert(9);
-    cout<<"printing the list: "<<endl;
-    myList.print();
-    cout<<endl<<endl;
-
-    myList.insert(9);
+    myList.update(2, 3);
     cout<<"printing the list: "<<endl;
     myList.print();
     cout<<endl<<endl;

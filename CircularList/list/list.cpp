@@ -86,7 +86,87 @@ void listC<T>:: print(){
 }
 
 template<class T>
+void listC<T> :: removeFirst(){
+    if(isEmpty()){  //si esta vacia-->  retornar
+        return;
+    }
+    //no vacia--> just one element
+    if(head->getNext()==head){ //head pointing to itself
+        delete head;    //libera la unica memoria en uso
+        head = nullptr;
+        tail=nullptr;
+        length=0;
+        return;
+    }
+
+    //no vacia--> more than 1 element
+    NodeC<T>* temp=head;
+    tail->setNext(head->getNext()); // link tail-new head
+    head=head->getNext(); //pointer to head
+    delete temp;
+    length--;
+}
+
+template<class T>
+void listC<T> :: removeLast(){
+    //si la lista esta vacia
+    if(isEmpty()){
+        return;
+    }
+    //if list isn't empty, but there is just one element
+    if(head->getNext()==head){
+        delete head;
+        head=nullptr;
+        tail=nullptr;
+        length=0;
+        return;
+    }
+    //no vacia --> more than one element
+    // search for the second last Node
+    NodeC<T>* temp=head; 
+    while(temp->getNext()!= tail){
+        temp=temp->getNext();
+    }
+    temp->setNext(head); //once found, set its next to head
+    delete tail;        //delete tail
+    tail=temp;          // update the new tail
+    length--;
+}
+
+template<class T>
 bool listC<T> :: remove(T data){
 
+    //if list is empty
+    if(isEmpty()){
+        return false;
+    }
+
+    //list isn't empty
+    
+    if( data== head->getData()){    // Case1: if data= head->data
+        removeFirst();
+        return true;
+    }
+    if(data== tail->getData()){     //Case 2: if data= tail->data
+        removeLast();
+        return true;
+    }
+    //case 3: between nodes --->search
+    NodeC<T>* prev=tail;
+    NodeC<T>* NodeToDelete=head;  //works as actual
+
+    do{
+        prev=NodeToDelete;
+        NodeToDelete=NodeToDelete->getNext();
+    }while(NodeToDelete->getData()!=data && NodeToDelete!=head);
+    //reached end of list without finding the data
+    if(NodeToDelete==head){
+        return false;
+    }
+    //data was found
+    prev->setNext(NodeToDelete->getNext());
+    delete NodeToDelete;
+    length--;
+    return true;
 }
 

@@ -198,17 +198,17 @@ bool listC<T>:: update(int n, T data){  //remueve en posicion n+1 (n contando de
     }   
     // Possible 2. at tail
     if(actual==tail){
-        if(data>=last->getData()){
-            actual->setData(data);
+        if(data>=last->getData()){  //preserves space in memory if the prev data is smaller or equal than the new Data
+            actual->setData(data);  //just change the data
         }else{
-            removeLast();
+            removeLast();       //otherwise, removeLast & insert
             insert(data);
         }
         return true;
     }
     //Possible 3. Between nodes
-    if(data<=last->getData() && data>=actual->getNext()->getData()){
-        actual->setData(data);
+    if(data<=last->getData() && data>=actual->getNext()->getData()){    //preserves space in memory
+        actual->setData(data);  
     }else{
         remove(actual->getData());
         insert(data);

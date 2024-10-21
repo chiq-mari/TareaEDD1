@@ -135,14 +135,12 @@ void listC<T> :: removeLast(){
 
 template<class T>
 bool listC<T> :: remove(T data){
-
     //if list is empty
     if(isEmpty()){
         return false;
     }
 
     //list isn't empty
-    
     if( data== head->getData()){    // Case1: if data= head->data
         removeFirst();
         return true;
@@ -154,19 +152,67 @@ bool listC<T> :: remove(T data){
     //case 3: between nodes --->search
     NodeC<T>* prev=tail;
     NodeC<T>* NodeToDelete=head;  //works as actual
-
     do{
         prev=NodeToDelete;
         NodeToDelete=NodeToDelete->getNext();
     }while(NodeToDelete->getData()!=data && NodeToDelete!=head);
+
     //reached end of list without finding the data
     if(NodeToDelete==head){
         return false;
     }
+
     //data was found
     prev->setNext(NodeToDelete->getNext());
     delete NodeToDelete;
     length--;
+    return true;
+}
+
+template<class T>
+bool listC<T>:: update(int n, T data){  //remueve en posicion n+1 (n contando desde 0) y agrega data
+    //case: Not possible
+    if(n>=length){ // max indice= length-1
+        return false;
+    }
+    //case Possible
+    NodeC<T>* last=tail;
+    NodeC<T>* actual=head; // node in position to delete
+    //gets position in actual 
+    for(int i=0; i<n; i++){
+        last=actual;
+        actual=actual->getNext();
+    }
+    // cases--> data matches their place
+
+    // Possible 1. at head (actual)
+    if(actual==head){
+        if(data<=actual->getNext()->getData()){ //it preserves posistion if the new data smaller or equal than the data next to head
+            actual->setData(data);
+        }
+        else{  
+            removeFirst();
+            insert(data);
+        }
+        return true;
+    }   
+    // Possible 2. at tail
+    if(actual==tail){
+        if(data>=last->getData()){
+            actual->setData(data);
+        }else{
+            removeLast();
+            insert(data);
+        }
+        return true;
+    }
+    //Possible 3. Between nodes
+    if(data<=last->getData() && data>=actual->getNext()->getData()){
+        actual->setData(data);
+    }else{
+        remove(actual->getData());
+        insert(data);
+    }
     return true;
 }
 

@@ -26,6 +26,10 @@ main(){
     myList.print();
     cout<<endl<<endl;
 
+    cout<<myList.update(2, 9);
+    cout<<"printing the list: "<<endl;
+    myList.print();
+
     myList.insert(18);
     cout<<"printing the list: "<<endl;
     myList.print();

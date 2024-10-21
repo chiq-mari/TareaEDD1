@@ -16,6 +16,6 @@ class listC{ //class for a circular linked list
         void removeLast();  //removes tail (this does not alter the order of the list)              //tested
         bool remove(T);  //confirma si lo removio       //tested
         void print();   //una sola direccion       //tested 
-        bool update(int, T);    //elimina dato en posision int, haciendo head 0 y agrega dato T
+        bool update(int, T);    //elimina dato en posicion int, haciendo head 0 y agrega dato T     //tested
 
 };

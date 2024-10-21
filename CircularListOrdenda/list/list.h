@@ -1,6 +1,6 @@
 #include"../node/node.cpp"
 
-//para uso dato tipo Person
+//para uso dato tipo Persona
 
 template<class T>
 class listC{ //class for a circular linked list

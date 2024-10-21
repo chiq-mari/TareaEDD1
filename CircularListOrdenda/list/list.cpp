@@ -45,16 +45,16 @@ void listC<T> :: insertLast(T data){
 }
 
 template<class T>
-void listC<T> :: insert(T data){
+void listC<T> :: insert(T data){    //ESPECIFICA PARA USO DE TIPO DE DATO PERSONA
 
     NodeC<T>* newNode= new NodeC<T>(data, nullptr); // crea el dato apuntando a null
 
-    if(isEmpty() || data < head->getData()){ // de estar vacio o si el dato  a insertar es menor que el de head
+    if(isEmpty() || data.getAge() < head->getData().getAge()){ // de estar vacio o si el dato  a insertar es menor que el de head
         insertFirst(data);                   //insertFirst
         return;
     }
 
-    if(data > tail->getData()){ //si el dato insertar es mayor que la cola 
+    if(data.getAge() > tail->getData().getAge()){ //si el dato insertar es mayor que la cola 
         insertLast(data);       //insertLast
         return;
     }
@@ -65,7 +65,7 @@ void listC<T> :: insert(T data){
     do{     // busqueda: mientras actual sea menor que data(salta el primer caso)
         prev=actual;
         actual=actual->getNext();
-    }while(actual->getData() <data);
+    }while(actual->getData().getAge() <data.getAge());
 
     prev->setNext(newNode); //rearrange links
     newNode->setNext(actual);
@@ -82,6 +82,7 @@ void listC<T>:: print(){
     cout<<head<<endl;
     do{
         actual->print();
+        cout<<endl;
         actual=actual->getNext();
     }while(actual!=head);
     cout<<"length: "<<length<<endl;
@@ -134,7 +135,7 @@ void listC<T> :: removeLast(){
     tail=temp;          // update the new tail
     length--;
 }
-
+//----------------------------------------------------- ??
 template<class T>
 bool listC<T> :: remove(T data){
     //if list is empty
@@ -143,11 +144,11 @@ bool listC<T> :: remove(T data){
     }
 
     //list isn't empty
-    if( data== head->getData()){    // Case1: if data= head->data
+    if( data.isEqual(head->getData())){    // Case1: if data= head->data
         removeFirst();
         return true;
     }
-    if(data== tail->getData()){     //Case 2: if data= tail->data
+    if(data.isEqual(tail->getData())){     //Case 2: if data= tail->data
         removeLast();
         return true;
     }
@@ -157,7 +158,7 @@ bool listC<T> :: remove(T data){
     do{
         prev=NodeToDelete;
         NodeToDelete=NodeToDelete->getNext();
-    }while(NodeToDelete->getData()!=data && NodeToDelete!=head);
+    }while(data.isDifferent(NodeToDelete->getData()) && NodeToDelete!=head);
 
     //reached end of list without finding the data
     if(NodeToDelete==head){
@@ -189,7 +190,7 @@ bool listC<T>:: update(int n, T data){  //remueve en posicion n+1 (n contando de
 
     // Possible 1. at head (actual)
     if(actual==head){
-        if(data<=actual->getNext()->getData()){ //it preserves posistion if the new data smaller or equal than the data next to head
+        if(data.getAge()<=actual->getNext()->getData().getAge()){ //it preserves posistion if the new data smaller or equal than the data next to head
             actual->setData(data);
         }
         else{  
@@ -200,7 +201,7 @@ bool listC<T>:: update(int n, T data){  //remueve en posicion n+1 (n contando de
     }   
     // Possible 2. at tail
     if(actual==tail){
-        if(data>=last->getData()){  //preserves space in memory if the prev data is smaller or equal than the new Data
+        if(data.getAge()>=last->getData().getAge()){  //preserves space in memory if the prev data is smaller or equal than the new Data
             actual->setData(data);  //just change the data
         }else{
             removeLast();       //otherwise, removeLast & insert
@@ -209,7 +210,7 @@ bool listC<T>:: update(int n, T data){  //remueve en posicion n+1 (n contando de
         return true;
     }
     //Possible 3. Between nodes
-    if(data<=last->getData() && data>=actual->getNext()->getData()){    //preserves space in memory
+    if(data.getAge()<=last->getData().getAge() && data.getAge()>=actual->getNext()->getData().getAge()){    //preserves space in memory
         actual->setData(data);  
     }else{
         remove(actual->getData());

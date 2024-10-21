@@ -1,6 +1,6 @@
 #include ".\node.h"
 
-//para uso dato tipo Person
+//para uso dato tipo Persona
 
 template<class T>
 NodeC<T>:: NodeC(T data){
@@ -41,9 +41,9 @@ void NodeC<T> :: setNext(NodeC<T>* next){
 template<class T>
 void NodeC<T> ::print(){    //al imprimir el dato generico se modifica
     cout<<"Dato: "<<endl;
-    cout<<"Nombre: "<<data->name<<endl;
-    cout<<"Apellido: "<<data->lastName<<endl;
-    cout<<"Age: "<<data->age<<endl;
-    cout<<"ID: "<<data->id<<endl;
+    cout<<"Nombre: "<<data.getName()<<endl;
+    cout<<"Apellido: "<<data.getLastName()<<endl;
+    cout<<"Age: "<<data.getAge()<<endl;
+    cout<<"ID: "<<data.getID()<<endl;
     cout<<"Next: "<<next<<endl;
 }

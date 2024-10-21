@@ -9,5 +9,11 @@ class Persona{
         int id;
     public:
         Persona();
-        Persona(string, string, int, int); 
+        Persona(string, string, int, int);
+        string getName();
+        string getLastName();
+        int getAge();
+        int getID();    
+        bool isEqual(Persona);
+        bool isDifferent(Persona);     
 };

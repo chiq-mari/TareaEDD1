@@ -45,8 +45,12 @@ void NodeCDouble<T>:: setPrev(NodeCDouble<T>* prev){
 
 template<class T>
 void NodeCDouble<T> :: print(){
-    cout<<"Data: "<<data<<endl;
+    cout<<"Data Persona: "<<endl;
+    cout<<"Nombre: "<<data.getName()<<endl;
+    cout<<"Apellido: "<<data.getLastName()<<endl;
+    cout<<"Age: "<<data.getAge()<<endl;
+    cout<<"ID: "<<data.getID()<<endl;
     cout<<"Direccion del siguiente: "<<next<<endl;
     cout<<"Direccion del anterior: "<<prev<<endl;
-    cout<<"---------\n";
+    cout<<"---------\n";    //can be removed
 }

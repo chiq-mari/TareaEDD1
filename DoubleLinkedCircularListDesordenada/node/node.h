@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+//para uso tipo de dato persona
+
 template<class T>
 class NodeCDouble{
     private:

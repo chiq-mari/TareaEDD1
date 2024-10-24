@@ -1,5 +1,7 @@
 #include"..\node\node.cpp"
 
+//para uso dato tipo Persona
+
 template<class T>
 class listCDoubleDesord{
     private:
@@ -20,5 +22,3 @@ class listCDoubleDesord{
         void print();   
         void printReverse();
 };
-
-//checked listCDouble, isEmpty, print

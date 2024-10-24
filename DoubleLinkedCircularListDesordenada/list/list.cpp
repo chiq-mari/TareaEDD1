@@ -102,11 +102,11 @@ bool listCDoubleDesord<T> :: remove(T data){
     if(isEmpty()){  //case 1: list is empty
         return false;
     }
-    if(data== head->getData()){ //case 2: data is the one of head
+    if(data.isEqual(head->getData())){ //case 2: data is the one of head
         removeFirst();
         return true;
     }
-    if(data==tail->getData()){  //case 3: data is the one of tail
+    if(data.isEqual(tail->getData())){  //case 3: data is the one of tail
         removeLast();
         return true;
     }
@@ -116,7 +116,7 @@ bool listCDoubleDesord<T> :: remove(T data){
     NodeCDouble<T>* next;
     do{ //search
         NodeToDelete=NodeToDelete->getNext();
-    }while(NodeToDelete!=head && NodeToDelete->getData()!=data);
+    }while(NodeToDelete!=head && data.isDifferent(NodeToDelete->getData()));
 
     if (NodeToDelete==head){
         return false;   //reached end of list

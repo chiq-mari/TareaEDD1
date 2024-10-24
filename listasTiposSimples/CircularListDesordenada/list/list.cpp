@@ -161,11 +161,9 @@ bool listCDesord<T>:: update(int n, T data){  //remueve en posicion n+1 (n conta
         return false;
     }
     //case Possible
-    NodeC<T>* last=tail;
     NodeC<T>* actual=head; // node in position to delete
     //gets position in actual 
     for(int i=0; i<n; i++){
-        last=actual;
         actual=actual->getNext();
     }
     // cases--> //not needed to think if it's tail, head, or between nodes
